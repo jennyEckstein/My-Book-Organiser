@@ -5,7 +5,7 @@
  */
 
 var app = require('../app');
-var debug = require('debug')('my-book-organiser:server');
+var debug = require('debug')('angular2-nodejs:server');
 var http = require('http');
 
 /**

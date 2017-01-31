@@ -21,11 +21,8 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-//in case our back-end and front-end run on different servers
-app.use(function(req, res ,next){
-  //certain domain or IP - now allow all
+app.use(function(req, res, next) {
   res.setHeader('Access-Control-Allow-Origin', '*');
-  //what type of headers are allowed
   res.setHeader('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
   res.setHeader('Access-Control-Allow-Methods', 'POST, GET, PATCH, DELETE, OPTIONS');
   next();
@@ -37,6 +34,5 @@ app.use('/', appRoutes);
 app.use(function(req, res, next) {
   res.render('index');
 });
-
 
 module.exports = app;
