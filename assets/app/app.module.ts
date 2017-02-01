@@ -8,6 +8,8 @@ import { BooksComponent } from "./books/books.component";
 import { BookListComponent } from "./books/book-list.component";
 import { ProfileComponent } from "./books/profile.component";
 import { routing } from "./app.routing";
+import { SigninComponent } from "./header/auth/signin.component";
+import { SignupComponent } from "./header/auth/signup.component";
 
 @NgModule({
     declarations: [
@@ -16,7 +18,9 @@ import { routing } from "./app.routing";
 	    FooterComponent,
 	    BooksComponent,
 	    BookListComponent,
-	    ProfileComponent
+	    ProfileComponent,
+	    SigninComponent,
+	    SignupComponent
     ],
     imports: [BrowserModule, routing],
     bootstrap: [AppComponent]
