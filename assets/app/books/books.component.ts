@@ -4,10 +4,10 @@ import { Component } from "@angular/core";
 	selector: 'app-books',
 	template: 
 	`
-		TODO: implement routing here 
+		Books List here
 	`
 })
 
 export class BooksComponent {
-	
+
 }
