@@ -6,7 +6,10 @@ import { BookComponent } from "./book.component";
 
 @Component ({
 	selector: 'app-book-list',
-	template: `<div><app-book
+	template: `<div>
+	
+	<a [routerLink]="['/books/add']"> Add Book</a>
+	<app-book
 		*ngFor="let book of books"
 		[book]="book">
 		</app-book>
