@@ -4,7 +4,7 @@ import { Component } from "@angular/core";
 	selector: 'app-books',
 	template: 
 	`
-		Books List here
+		<app-book-list></app-book-list>
 	`
 })
 

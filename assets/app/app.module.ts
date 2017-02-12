@@ -10,6 +10,7 @@ import { ProfileComponent } from "./books/profile.component";
 import { routing } from "./app.routing";
 import { SigninComponent } from "./header/auth/signin.component";
 import { SignupComponent } from "./header/auth/signup.component";
+import { BookComponent } from "./books/book.component";
 
 @NgModule({
     declarations: [
@@ -20,7 +21,8 @@ import { SignupComponent } from "./header/auth/signup.component";
 	    BookListComponent,
 	    ProfileComponent,
 	    SigninComponent,
-	    SignupComponent
+	    SignupComponent,
+	    BookComponent
     ],
     imports: [BrowserModule, routing],
     bootstrap: [AppComponent]
