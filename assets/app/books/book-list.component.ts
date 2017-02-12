@@ -6,9 +6,10 @@ import { BookComponent } from "./book.component";
 
 @Component ({
 	selector: 'app-book-list',
-	template: `<div
-		*ngFor="let book of books">
-		<p>{{book.title}}</p>
+	template: `<div><app-book
+		*ngFor="let book of books"
+		[book]="book">
+		</app-book>
 	</div>`
 })
 
