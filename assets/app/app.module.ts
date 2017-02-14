@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { HttpModule } from "@angular/http";
 
 import { AppComponent } from "./app.component";
 import { HeaderComponent } from "./header/header.component";
@@ -12,6 +13,8 @@ import { SigninComponent } from "./header/auth/signin.component";
 import { SignupComponent } from "./header/auth/signup.component";
 import { BookComponent } from "./books/book.component";
 import { AddBookComponent } from "./books/add-book.component";
+
+import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 
 @NgModule({
     declarations: [
@@ -26,7 +29,7 @@ import { AddBookComponent } from "./books/add-book.component";
 	    BookComponent,
 	    AddBookComponent
     ],
-    imports: [BrowserModule, routing],
+    imports: [HttpModule, BrowserModule, routing, FormsModule, ReactiveFormsModule],
     bootstrap: [AppComponent]
 })
 export class AppModule {

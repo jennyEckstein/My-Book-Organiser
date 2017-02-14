@@ -4,10 +4,14 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
+var mongoose = require('mongoose');
 
 var appRoutes = require('./routes/app');
+var bookRoutes = require('./routes/book');
 
 var app = express();
+mongoose.Promise = global.Promise;
+mongoose.connect('localhost:27017/books-organiser');
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -28,6 +32,7 @@ app.use(function(req, res, next) {
   next();
 });
 
+app.use('/books', bookRoutes);
 app.use('/', appRoutes);
 
 // catch 404 and forward to error handler
