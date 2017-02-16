@@ -6,5 +6,6 @@
 		<h6>{{ book.author }}</h6>
 		<img src="{{ book.imageUrl }}" ><br>
 		{{ book.description }}
+		<a (click)="onDelete()">Delete</a>
 	</div>
 </article> 

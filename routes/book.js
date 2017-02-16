@@ -40,4 +40,35 @@ router.post('/add', function(req, res, next){
 	});
 });
 
+router.delete('/:id', function(req, res, next){
+	console.log('ID');
+	console.log(req.params.id);
+	Book.findById(req.params.id, function(err, book){
+		if(err){
+			return res.status(500).json({
+				title: 'An Error occured',
+				error: err
+			})
+		}
+		if (!book){
+			return res.status(500).json({
+				title: 'Message Not Found',
+				error: { book: 'Book not found'}
+			});
+		}
+		book.remove(function(err, result){
+			if (err){
+				return res.status(500).json({
+					title: 'An Error occured',
+					error: err
+				});
+			}
+			res.status(200).json({
+			message: 'Book Deleted', 
+			obj: result
+		});
+		});
+	});
+});
+
 module.exports = router;

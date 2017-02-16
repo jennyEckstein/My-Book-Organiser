@@ -21,13 +21,13 @@ export class BookService{
 			let transformedBooks: Book[] = [];
 			for(let book of books){
 				transformedBooks.push(
-					new Book(
-						book._id,
+					new Book(						
 						book.isbn,
 						book.title,
 						book.imageUrl,
 						book.description,
-						book.author
+						book.author,
+						book._id
 					));
 			}
 			this.books = transformedBooks;
@@ -45,6 +45,17 @@ export class BookService{
 		return this.http.post('http://localhost:3000/books/add', body, {headers: headers})
 		.map((response: Response) => response.json())
 		.catch((error: Response) => Observable.throw(error.json()));
+	}
+
+	deleteBook(book: Book){
+		console.log('book here');
+		console.log(book);
+		this.books.splice(this.books.indexOf(book), 1 );
+		return this.http.delete('http://localhost:3000/books/' + book.book_id)
+		.map((response: Response) => response.json())
+		.catch((error: Response) => {
+			return Observable.throw(error.json())
+		});
 	}
 
 }
