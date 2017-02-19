@@ -5,6 +5,7 @@ import {
 	Validators, 
 	ReactiveFormsModule } from "@angular/forms";
 
+import { User } from "./user.model";
 
 @Component ({
 	selector: 'app-signup',
@@ -15,7 +16,16 @@ export class SignupComponent implements OnInit{
 	signupForm: FormGroup;
 
 	onSubmit(){
+		const user = new User(
+			this.signupForm.value.firstName, 
+			this.signupForm.value.lastName, 
+			this.signupForm.value.email, 
+			this.signupForm.value.password
+		);
 
+		console.log(user);
+
+		this.signupForm.reset();
 	}
 
 	ngOnInit(){
