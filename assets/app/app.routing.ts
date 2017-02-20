@@ -14,7 +14,7 @@ const APP_ROUTER: Routes = [
 	{path: 'books/add', component: AddBookComponent},
 	{path: 'profile', component: ProfileComponent},
 	{path: 'signin', component: SigninComponent},
-	{path: 'signup', component: SignupComponent}
+	{path: 'auth/signup', component: SignupComponent}
 ];
 
 export const routing = RouterModule.forRoot(APP_ROUTER);

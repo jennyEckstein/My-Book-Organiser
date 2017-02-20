@@ -8,6 +8,7 @@ var mongoose = require('mongoose');
 
 var appRoutes = require('./routes/app');
 var bookRoutes = require('./routes/book');
+var authRoutes = require('./routes/auth');
 
 var app = express();
 mongoose.Promise = global.Promise;
@@ -32,6 +33,7 @@ app.use(function(req, res, next) {
   next();
 });
 
+app.use('/auth', authRoutes);
 app.use('/books', bookRoutes);
 app.use('/', appRoutes);
 
