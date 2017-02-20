@@ -8,7 +8,7 @@
 				<ul class="nav nav-pills">
 					<li routerLinkActive="active"><a [routerLink]="['/signin']">Sign In</a></li>
 					<li routerLinkActive="active"><a [routerLink]="['/auth/signup']">Sign Up</a></li>
-					<li routerLinkActive="active"><a href="#">Log Out</a></li>
+					<li routerLinkActive="active" (click)="logout()"><a href="#">Log Out</a></li>
 				</ul>
 			</nav>
 		</header>
