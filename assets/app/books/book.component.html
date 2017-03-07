@@ -1,11 +1,13 @@
-<article [ngStyle]="{backgroundColor: '#EBEBEB'}">
-	<div>
-		<h4>{{ book.book_id }}</h4>
+<article class="col-md-8 col-md-offset-2">
+<div class="row">
+	<div class="col-md-2" ><img src="{{ book.imageUrl }}" ></div>
+	<div class="col-md-10"  >
+		<!-- <h4>{{ book.book_id }}</h4> -->
 		<h2>{{ book.title }}</h2>
 		<h6>{{ book.isbn }} </h6>
-		<h6>{{ book.author }}</h6>
-		<img src="{{ book.imageUrl }}" ><br>
+		<h6>{{ book.author }}</h6>		
 		{{ book.description }}
 		<a (click)="onDelete()">Delete</a>
 	</div>
+</div>
 </article> 

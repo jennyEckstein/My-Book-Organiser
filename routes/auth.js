@@ -4,7 +4,9 @@ var router = express.Router();
 var User = require("../models/user");
 
 router.post('/signin', function(req, res, next){
+	console.log("auth.js");
 	User.findOne({email: req.body.email}, function(err, user){
+		console.log(req.body.email);
 		if (err){
 			return res.status(500).json({
 				title: 'An error occured',
@@ -12,25 +14,27 @@ router.post('/signin', function(req, res, next){
 			});
 		}
 		if(!user){
+			console.log("Something went wrong");
 			return res.status(401).json({
-				title: 'Login failed',
+				title: 'Login failed - user not returned',
 				error: {message: 'Invalid login credentials'}
 			});
 		}
 		if (req.body.password !== user.password){
 			return res.status(401).json({
-				title: 'Login failed',
+				title: 'Login failed - wrong password',
 				error: {message: 'Invalid login credentials'}
 			});
 		}
 
 		res.status(200).json({
-			message: 'Logged In'
+			message: 'Logged In',
+			user_name: user.firstName
 		});
-	})
+	});
 });
 
-router.post('/', function(req, res, next){
+router.post('/signup', function(req, res, next){
 	console.log("posting");
 	var user = new User({
 		firstName: req.body.firstName, 

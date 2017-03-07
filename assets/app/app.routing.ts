@@ -13,7 +13,7 @@ const APP_ROUTER: Routes = [
 	{path: 'books', component: BooksComponent},
 	{path: 'books/add', component: AddBookComponent},
 	{path: 'profile', component: ProfileComponent},
-	{path: 'signin', component: SigninComponent},
+	{path: 'auth/signin', component: SigninComponent},
 	{path: 'auth/signup', component: SignupComponent}
 ];
 
