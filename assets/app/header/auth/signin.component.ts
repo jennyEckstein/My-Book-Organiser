@@ -30,7 +30,7 @@ export class SigninComponent implements OnInit {
 		console.log(user);
 		this.authService.signin(user)
 		.subscribe(
-			data => {localStorage.setItem('userid', data.fistName);
+			data => {localStorage.setItem('userid', data.user_name);
 			this.router.navigateByUrl('/');
 		},
 			error => console.error(error)			
