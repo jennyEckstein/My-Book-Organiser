@@ -3,6 +3,26 @@ var router = express.Router();
 
 var User = require("../models/user");
 
+/*router.post('/:firstName', function(req, res, next){
+	console.log("additing list");
+	var user = new User({
+		firstName: req.firstName,
+		lists: ["New List"]
+	});
+	user.save(function(err, result){
+		if(err){
+			return res.status(500).json({
+				title: 'An error occured',
+				error: err
+			});
+		}
+		res.status(201).json({
+			message: 'Saved to list',
+			obj: result
+		});
+	});
+});*/
+
 router.post('/signin', function(req, res, next){
 	console.log("auth.js");
 	User.findOne({email: req.body.email}, function(err, user){
@@ -15,7 +35,7 @@ router.post('/signin', function(req, res, next){
 		}
 		if(!user){
 			console.log("Something went wrong");
-			return res.status(401).json({
+			return res.status(400).json({
 				title: 'Login failed - user not returned',
 				error: {message: 'Invalid login credentials'}
 			});
