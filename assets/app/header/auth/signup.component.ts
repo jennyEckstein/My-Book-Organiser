@@ -4,6 +4,7 @@ import {
 	FormControl, 
 	Validators, 
 	ReactiveFormsModule } from "@angular/forms";
+import { Router } from "@angular/router";
 
 import { AuthService } from "./auth.service";
 import { User } from "./user.model";
@@ -16,14 +17,15 @@ import { User } from "./user.model";
 export class SignupComponent implements OnInit{
 	signupForm: FormGroup;
 
-	constructor(private authService: AuthService){}
+	constructor(private authService: AuthService,
+				private router: Router){}
 
 	onSubmit(){
 		const user = new User(
-			this.signupForm.value.firstName, 
-			this.signupForm.value.lastName, 
 			this.signupForm.value.email, 
-			this.signupForm.value.password
+			this.signupForm.value.password,
+			this.signupForm.value.firstName, 
+			this.signupForm.value.lastName			
 		);
 
 		console.log(user);
@@ -33,6 +35,7 @@ export class SignupComponent implements OnInit{
 				error => console.log(error)
 			);
 		this.signupForm.reset();
+		this.router.navigateByUrl('/auth/signin');
 	}
 
 	ngOnInit(){

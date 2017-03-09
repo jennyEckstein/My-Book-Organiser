@@ -14,17 +14,12 @@ export class AuthService {
 
 	signup(user: User){
 		const body = JSON.stringify(user);
-		console.log("User");
-		console.log(user);
 		const headers = new Headers({'Content-Type': 'application/json'});
-		console.log(body);
 		return this.http.post('http://localhost:3000/auth/signup', body, {headers: headers})
-		.map((response: Response) => {
-			console.log("response here");			
+		.map((response: Response) => {		
 			return response.json();
 		})
 		.catch((error: Response) => {
-			console.log("error here");
 			return Observable.throw(error.json())
 		})		
 	}

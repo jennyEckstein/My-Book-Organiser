@@ -1,5 +1,6 @@
 var express = require('express');
 var router = express.Router();
+var bcrypt = require('bcryptjs');
 
 var User = require("../models/user");
 
@@ -54,13 +55,12 @@ router.post('/signin', function(req, res, next){
 	});
 });
 
-router.post('/signup', function(req, res, next){
-	console.log("posting");
+router.post('/signup', function(req, res, next){	
 	var user = new User({
 		firstName: req.body.firstName, 
 		lastName: req.body.lastName,
 		email: req.body.email,
-		password: req.body.password
+		password: bcrypt.hashSync(req.body.password, 10)
 	});
 
 	user.save(function(err, result){
