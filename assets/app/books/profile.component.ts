@@ -1,6 +1,7 @@
-import { Component } from "@angular/core";
+import { Component, OnInit } from "@angular/core";
 
 import { ProfileService } from "./profile.service";
+import { User } from "../header/auth/user.model";
 
 @Component ({
 	selector: 'app-profile',
@@ -9,9 +10,22 @@ import { ProfileService } from "./profile.service";
 
 export class ProfileComponent {
 
+	profileInfo: User;
+	bookList: string[] = [];
+
 	constructor(private profileService: ProfileService){}
 
-	addBookList(listName: string){
+	ngOnInit(){
+		//TODO: get user info		
+		this.profileService.getProfileInfo(localStorage.getItem('userId'))
+			.subscribe(
+					data => console.log(data),
+					error => console.log(error)
+				);
+
+	}
+
+	/*addBookList(listName: string){
 		console.log(listName);
 
 		this.profileService.addList(listName)
@@ -19,5 +33,5 @@ export class ProfileComponent {
 			data => console.log(data),
 			error => console.error(error)
 		);		
-	}
+	}*/
 }
