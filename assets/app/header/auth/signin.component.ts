@@ -30,10 +30,12 @@ export class SigninComponent implements OnInit {
 		console.log(user);
 		this.authService.signin(user)
 		.subscribe(
-			data => {localStorage.setItem('userid', data.user_name);
-			this.router.navigateByUrl('/');
+			data => {
+				localStorage.setItem('token', data.token)
+				localStorage.setItem('userId', data.userId)
+				this.router.navigateByUrl('/');
 		},
-			error => console.error(error)			
+			error => console.log(error)		
 		);
 		this.signInForm.reset();
 	}
