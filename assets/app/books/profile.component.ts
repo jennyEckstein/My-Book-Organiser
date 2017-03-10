@@ -19,7 +19,10 @@ export class ProfileComponent {
 		//TODO: get user info		
 		this.profileService.getProfileInfo(localStorage.getItem('userId'))
 			.subscribe(
-					data => console.log(data),
+					data => {
+						console.log(data.obj)
+						this.profileInfo = data.obj
+					},
 					error => console.log(error)
 				);
 
