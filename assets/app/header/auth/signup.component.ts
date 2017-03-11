@@ -21,11 +21,14 @@ export class SignupComponent implements OnInit{
 				private router: Router){}
 
 	onSubmit(){
+		var lists:string[] = [];
+
 		const user = new User(
 			this.signupForm.value.email, 
 			this.signupForm.value.password,
 			this.signupForm.value.firstName, 
-			this.signupForm.value.lastName			
+			this.signupForm.value.lastName,
+			lists
 		);
 
 		console.log(user);

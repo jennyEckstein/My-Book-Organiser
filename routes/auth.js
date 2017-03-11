@@ -87,7 +87,8 @@ router.post('/signup', function(req, res, next){
 		firstName: req.body.firstName, 
 		lastName: req.body.lastName,
 		email: req.body.email,
-		password: bcrypt.hashSync(req.body.password, 10)
+		password: bcrypt.hashSync(req.body.password, 10),
+		lists: req.body.lists
 	});
 
 	user.save(function(err, result){
