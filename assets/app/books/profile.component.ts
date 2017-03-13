@@ -2,6 +2,8 @@ import { Component, OnInit } from "@angular/core";
 
 import { ProfileService } from "./profile.service";
 import { User } from "../header/auth/user.model";
+import { BookList } from "./book-list.model";
+
 
 @Component ({
 	selector: 'app-profile',
@@ -11,9 +13,10 @@ import { User } from "../header/auth/user.model";
 export class ProfileComponent {
 
 	profileInfo: User;
-	bookList: string[] = [];
 
 	constructor(private profileService: ProfileService){}
+
+
 
 	ngOnInit(){
 		//TODO: get user info		
@@ -28,13 +31,16 @@ export class ProfileComponent {
 
 	}
 
-	/*addBookList(listName: string){
-		console.log(listName);
-
-		this.profileService.addList(listName)
+	addBookList(listName: string){
+		var date = "03/13/2017";
+		var userId = localStorage.getItem('userId');
+		const list = new BookList(
+			listName, date, userId
+		);
+		this.profileService.addList(list)
 		.subscribe(
 			data => console.log(data),
 			error => console.error(error)
 		);		
-	}*/
+	}
 }

@@ -1,6 +1,6 @@
 export class BookList{
 	constructor(public listName: string,
-							public createdDate: Date,
+							public createdDate: string,
 							public userRef: string,
-							public bookRefs: string[]) {}
+							public bookRefs?: string[]) {}
 }

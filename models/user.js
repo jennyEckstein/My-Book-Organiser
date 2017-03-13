@@ -7,6 +7,7 @@ var schema = new Schema({
 	email: {type: String, required: true},
 	password: {type: String, required: true},
 	lists: [{type: Schema.Types.ObjectId, ref: 'List'}]
-})
+	//lists: [{type: String}]
+});
 
 module.exports = mongoose.model('User', schema);

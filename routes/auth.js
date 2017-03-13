@@ -4,30 +4,41 @@ var bcrypt = require('bcryptjs');
 var jwt = require('jsonwebtoken');
 
 var User = require("../models/user");
+var List = require("../models/list");
 
-/*router.post('/:firstName', function(req, res, next){
-	console.log("additing list");
-	var user = new User({
-		firstName: req.firstName,
-		lists: ["New List"]
+router.post('/addList', function(req, res, next){
+
+	var list = new List({
+		listName: req.body.listName, 
+		creationDate: req.body.createdDate,
+		userRef: req.body.userRef
 	});
-	user.save(function(err, result){
+
+	list.save(function(err, result){
 		if(err){
 			return res.status(500).json({
 				title: 'An error occured',
 				error: err
 			});
 		}
+		User.findById(req.body.userRef, function(err, user){
+			if(err){
+				return res.status(401).json({
+					title: 'Cannot save list to the user',
+					error:err
+				})
+			}
+			user.save();
+		});
+
 		res.status(201).json({
-			message: 'Saved to list',
+			message: 'List Saved',
 			obj: result
 		});
 	});
-});*/
+});
 
 router.get('/:id', function(req, res, next){
-	console.log('getting user id');
-	console.log(req.params.id);
 	User.findById(req.params.id, function(err, user){
 		if(err){
 			return res.status(500).json({
@@ -49,18 +60,15 @@ router.get('/:id', function(req, res, next){
 });
 
 router.post('/signin', function(req, res, next){
-	console.log("auth.js");
 	User.findOne({email: req.body.email}, function(err, user){
 		console.log(req.body.email);
 		if (err){
-			console.log("something off");
 			return res.status(500).json({
 				title: 'An error occured',
 				error: err
 			});
 		}
 		if(!user){
-			console.log("Something went wrong");
 			return res.status(400).json({
 				title: 'Login failed - user not returned',
 				error: {message: 'Invalid login credentials'}
