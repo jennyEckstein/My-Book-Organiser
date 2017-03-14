@@ -11,6 +11,9 @@
 			<input id="add-list" #listName class="form-control">
 
 					<button id="addList" (click)="addBookList(listName.value)">Add List</button>
+			<li *ngFor="let list of profileInfo?.lists">
+				{{ list }}
+			</li>
 		</div>
 	</div>
 </div>	

@@ -28,6 +28,7 @@ router.post('/addList', function(req, res, next){
 					error:err
 				})
 			}
+			user.lists.push(req.body.listName);
 			user.save();
 		});
 

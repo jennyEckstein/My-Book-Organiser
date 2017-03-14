@@ -23,17 +23,18 @@ export class ProfileComponent {
 		this.profileService.getProfileInfo(localStorage.getItem('userId'))
 			.subscribe(
 					data => {
+						console.log("HERE IS UPDATED USER");
 						console.log(data.obj)
 						this.profileInfo = data.obj
 					},
 					error => console.log(error)
 				);
-
 	}
 
 	addBookList(listName: string){
 		var date = "03/13/2017";
 		var userId = localStorage.getItem('userId');
+		this.profileInfo.lists.push(listName);
 		const list = new BookList(
 			listName, date, userId
 		);
