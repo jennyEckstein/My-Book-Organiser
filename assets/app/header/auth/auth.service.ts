@@ -10,6 +10,12 @@ export class AuthService {
 
 	constructor(private http: Http){}
 
+	isLoggedIn(){
+		console.log("Token");
+		console.log(localStorage.getItem("token"));
+		return localStorage.getItem("token") !== null;
+	}
+
 	signup(user: User){
 		const body = JSON.stringify(user);
 		const headers = new Headers({'Content-Type': 'application/json'});
