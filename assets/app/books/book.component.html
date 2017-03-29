@@ -1,4 +1,4 @@
-<article class="col-md-8 col-md-offset-2">
+<article [routerLink]="[book.book_id]">
 <div class="row">
 	<div class="col-md-2" ><img src="{{ book.imageUrl }}" ></div>
 	<div class="col-md-10"  >
@@ -11,3 +11,4 @@
 	</div>
 </div>
 </article> 
+<!-- (click)="getBookDetail()" -->

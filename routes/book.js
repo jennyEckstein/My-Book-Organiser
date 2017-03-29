@@ -3,6 +3,27 @@ var router  = express.Router();
 
 var Book = require('../models/books');
 
+router.get('/:id', function(req, res, next){
+	Book.findById(req.params.id, function(err, book){
+		if(err){
+			return res.status(500).json({
+				title: 'An Error Occured',
+				error: err
+			})
+		}
+		if(!book){
+			return res.status(400).json({
+				title: 'Book not found',
+				error: err
+			})
+		}
+		res.status(200).json({
+			message: 'Returning Book',
+			obj: book
+		})
+	})
+});
+
 router.get('/',  function(req, res, next){
 	Book.find().exec(function(err, books){
 		if (err){
@@ -40,9 +61,8 @@ router.post('/add', function(req, res, next){
 	});
 });
 
+
 router.delete('/:id', function(req, res, next){
-	console.log('ID');
-	console.log(req.params.id);
 	Book.findById(req.params.id, function(err, book){
 		if(err){
 			return res.status(500).json({

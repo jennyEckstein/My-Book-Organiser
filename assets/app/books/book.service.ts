@@ -13,15 +13,17 @@ export class BookService{
 	constructor(private http: Http){}
 
 	getBook(id: string){
-		return this.http.get('http://127.0.0.1:3000/books/' + id )
-			.map((response: Response) => response.json())
+		return this.http.get('http://localhost:3000/books/' + id )
+			.map((response: Response) => {
+				return response.json().obj;
+			})
 			.catch((error: Response) => Observable.throw(error.json()));
 	}
 
 	getBooks(){
 		//console.log (this.books);
 		//return this.books;
-		return this.http.get('http://127.0.0.1:3000/books')
+		return this.http.get('http://localhost:3000/books')
 		.map((response: Response) => {
 			const books = response.json().obj;
 			let transformedBooks: Book[] = [];
@@ -48,7 +50,7 @@ export class BookService{
 
 		const body = JSON.stringify(book);
 		const headers = new Headers({'Content-Type': 'application/json','Accept': 'application/json'});
-		return this.http.post('http://127.0.0.1:3000/books/add', body, {headers: headers})
+		return this.http.post('http://localhost:3000/books/add', body, {headers: headers})
 		.map((response: Response) => response.json())
 		.catch((error: Response) => Observable.throw(error.json()));
 	}
@@ -57,7 +59,7 @@ export class BookService{
 		console.log('book here');
 		console.log(book);
 		this.books.splice(this.books.indexOf(book), 1 );
-		return this.http.delete('http://127.0.0.1:3000/books/' + book.book_id)
+		return this.http.delete('http://localhost:3000/books/' + book.book_id)
 		.map((response: Response) => response.json())
 		.catch((error: Response) => {
 			return Observable.throw(error.json())

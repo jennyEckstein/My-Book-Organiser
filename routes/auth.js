@@ -49,7 +49,7 @@ router.post('/signin', function(req, res, next){
 			});
 		}
 		if (!bcrypt.compareSync(req.body.password, user.password)){
-			return res.status(401).json({
+			return res.status(400).json({
 				title: 'Login failed - wrong password',
 				error: {message: 'Invalid login credentials'}
 			});

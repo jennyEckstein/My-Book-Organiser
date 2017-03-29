@@ -13,8 +13,10 @@ import { SigninComponent } from "./header/auth/signin.component";
 import { SignupComponent } from "./header/auth/signup.component";
 import { BookComponent } from "./books/book.component";
 import { AddBookComponent } from "./books/add-book.component";
+import { BookDetail } from "./books/book-details/book-detail";
 
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
+import "rxjs/Rx";
 
 @NgModule({
     declarations: [
@@ -27,7 +29,8 @@ import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 	    SigninComponent,
 	    SignupComponent,
 	    BookComponent,
-	    AddBookComponent
+	    AddBookComponent,
+	    BookDetail
     ],
     imports: [HttpModule, BrowserModule, routing, FormsModule, ReactiveFormsModule],
     bootstrap: [AppComponent]

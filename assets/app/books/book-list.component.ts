@@ -34,7 +34,6 @@ export class BookListComponent implements OnInit{
 		.subscribe((books: Book[]) =>{
 			this.books = books;
 		});
-		console.log(this.books);
 	}
 
 	add(){
