@@ -102,7 +102,7 @@ router.post('/addList', function(req, res, next){
 					error:err
 				})
 			}
-			user.lists.push(req.body.listName);
+			user.lists.push(result._id);
 			user.save();
 		});
 

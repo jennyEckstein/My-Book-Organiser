@@ -6,7 +6,7 @@ var schema = new Schema({
 	lastName: {type: String, required: true},
 	email: {type: String, required: true},
 	password: {type: String, required: true},
-	lists: [{type: String}]
+	lists: [{type: Schema.Types.ObjectId, ref: 'List'}]
 	//lists: [{type: String}]
 });
 

@@ -34,7 +34,7 @@ export class ProfileComponent {
 	addBookList(listName: string){
 		var date = "03/13/2017";
 		var userId = localStorage.getItem('userId');
-		this.profileInfo.lists.push(listName);
+		//this.profileInfo.lists.push(listName);
 		const list = new BookList(
 			listName, date, userId
 		);
