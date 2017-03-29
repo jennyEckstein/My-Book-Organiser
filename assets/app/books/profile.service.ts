@@ -14,7 +14,8 @@ export class ProfileService{
 	constructor(private http: Http){}
 
 	getProfileInfo(userId){
-		return this.http.get('http://localhost:3000/auth/' + userId)
+		const token = localStorage.getItem('token') ? '?token=' + localStorage.getItem('token') : '';
+		return this.http.get('http://localhost:3000/auth/' + userId + token)
 			.map((response: Response) =>{
 				return response.json();
 			}).catch((error: Response) => {
@@ -24,8 +25,9 @@ export class ProfileService{
 
 	addList(list: BookList){
 		const headers = new Headers({'Content-Type': 'application/json','Accept': 'application/json'});
+		const token = localStorage.getItem('token') ? '?token=' + localStorage.getItem('token') : '';
 		const body = JSON.stringify(list);
-		return this.http.post('http://localhost:3000/auth/addList', body, {headers: headers})
+		return this.http.post('http://localhost:3000/auth/addList' + token, body, {headers: headers})
 		.map((response: Response) => response.json())
 		.catch((error: Response) => Observable.throw(error.json()));
 	}

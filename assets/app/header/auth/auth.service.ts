@@ -11,8 +11,6 @@ export class AuthService {
 	constructor(private http: Http){}
 
 	isLoggedIn(){
-		console.log("Token");
-		console.log(localStorage.getItem("token"));
 		return localStorage.getItem("token") !== null;
 	}
 
