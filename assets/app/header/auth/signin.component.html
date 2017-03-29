@@ -7,5 +7,7 @@
 			<input type="text" id="password" class="form-control" formControlName="password">
 		</div>
 		<button type="submit" class="btn btn-primary" [disabled]="!signInForm.valid">Submit</button>
+		<hr>
+		<a [routerLink]="['/auth/signup']">Create Account</a>
 	</form>
 </div>
