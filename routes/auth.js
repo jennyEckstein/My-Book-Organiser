@@ -113,6 +113,30 @@ router.post('/addList', function(req, res, next){
 	});
 });
 
+router.get('/profile/:id', function(req, res, next){
+	console.log('/profile/:id');
+	List.findById(req.params.id)
+	.populate('booksRef')
+	.exec(function(err, list){
+		if(err){
+			return res.status(500).json({
+				title: 'An error occured',
+				error: err
+			});
+		}
+		if(!list){
+			return res.status(500).json({
+				title: 'An error occured',
+				error: err
+			});
+		}
+		res.status(200).json({
+			message: 'List found',
+			obj: list
+		});
+	})
+});
+
 /* PROTECTED */
 /* Get user information by ID */
 router.get('/:id', function(req, res, next){
@@ -138,24 +162,6 @@ router.get('/:id', function(req, res, next){
 				obj: user
 		})
 	});
-	/*User.findById(req.params.id, function(err, user){
-		if(err){
-			return res.status(500).json({
-				title: 'An error occured',
-				error: err
-			})
-		}
-		if (!user){
-			return res.status(500).json({
-				title: 'User not found',
-				error: err
-			});
-		}
-		res.status(200).json({
-				message: 'User found',
-				obj: user
-		})
-	})*/
 });
 
 module.exports = router;

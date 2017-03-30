@@ -14,6 +14,7 @@ import { SignupComponent } from "./header/auth/signup.component";
 import { BookComponent } from "./books/book.component";
 import { AddBookComponent } from "./books/add-book.component";
 import { BookDetail } from "./books/book-details/book-detail";
+import { ListDetails } from "./books/list-details/list-details.component";
 
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import "rxjs/Rx";
@@ -30,7 +31,8 @@ import "rxjs/Rx";
 	    SignupComponent,
 	    BookComponent,
 	    AddBookComponent,
-	    BookDetail
+	    BookDetail,
+	    ListDetails
     ],
     imports: [HttpModule, BrowserModule, routing, FormsModule, ReactiveFormsModule],
     bootstrap: [AppComponent]

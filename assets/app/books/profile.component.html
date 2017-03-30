@@ -12,7 +12,7 @@
 
 					<button id="addList" (click)="addBookList(listName.value)">Add List</button>
 			<div *ngFor="let list of profileInfo?.lists">
-				<article [routerLink]="[list]">
+				<article [routerLink]="[list?._id]">
 				<h3>{{ list?.listName }}</h3> - {{ list?._id}} 
 				<p>{{ list?.creationDate }}</p>
 				</article>

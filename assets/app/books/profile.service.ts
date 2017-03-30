@@ -31,4 +31,13 @@ export class ProfileService{
 		.map((response: Response) => response.json())
 		.catch((error: Response) => Observable.throw(error.json()));
 	}
+
+	getBooksInList(listId){
+		console.log("mapped");
+		const token = localStorage.getItem('token') ? '?token=' + localStorage.getItem('token') : '';
+		return this.http.get('http://localhost:3000/auth/profile/' + listId + token)
+			.map((response: Response) => response.json())
+			.catch((error: Response) => Observable.throw(error.json()));
+	}
+
 }
