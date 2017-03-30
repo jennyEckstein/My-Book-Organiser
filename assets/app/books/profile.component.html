@@ -11,11 +11,12 @@
 			<input id="add-list" #listName class="form-control">
 
 					<button id="addList" (click)="addBookList(listName.value)">Add List</button>
-			<li *ngFor="let list of profileInfo?.lists">
+			<div *ngFor="let list of profileInfo?.lists">
 				<article [routerLink]="[list]">
-				{{ list }}
+				<h3>{{ list?.listName }}</h3> - {{ list?._id}} 
+				<p>{{ list?.creationDate }}</p>
 				</article>
-			</li>
+			</div>
 		</div>
 	</div>
 </div>	
